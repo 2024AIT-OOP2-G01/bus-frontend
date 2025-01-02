@@ -32,7 +32,7 @@ body {
 
 .top {
   width: 100%;
-  background-color: #747bff;
+  background-color:deepskyblue;
 }
 
 h1 {
@@ -66,7 +66,7 @@ h2 {
 }
 
 h3 {
-  font-size: 3.2em;
+  font-size: 1.6em;
   color: rgb(13, 228, 31);
 }
 

@@ -30,9 +30,44 @@ body {
   min-height: 100vh;
 }
 
+.top {
+  width: 100%;
+  background-color: #747bff;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.highlight {
+  font-size: 3.2em;
+}
+
+.station {
+  background-color: black;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+fieldset {
+  flex: 1; /* 各fieldsetが均等に幅を占める */
+  padding: 20px; /* 内側の余白 */
+  box-sizing: border-box; /* ボックスサイズをpaddingを含めて計算 */
+  border: 1px solid gray;
+}
+
+h2 {
+  font-size: 1.6em;
+  color: rgb(13, 228, 31);
+}
+
+h3 {
+  font-size: 3.2em;
+  color: rgb(13, 228, 31);
 }
 
 button {

@@ -28,11 +28,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-.top {
-  width: 100%;
-  background-color:deepskyblue;
+  background-color:rgb(141, 255, 255);
+  font-weight: 700;
 }
 
 h1 {
@@ -53,6 +50,10 @@ h1 {
   justify-content: space-between;
 }
 
+.canvas {
+  background-color: #ffffff;
+}
+
 fieldset {
   flex: 1; /* 各fieldsetが均等に幅を占める */
   padding: 20px; /* 内側の余白 */
@@ -62,12 +63,15 @@ fieldset {
 
 h2 {
   font-size: 1.6em;
-  color: rgb(13, 228, 31);
 }
 
 h3 {
   font-size: 1.6em;
   color: rgb(13, 228, 31);
+}
+
+h4 {
+  font-size: 2.4em;
 }
 
 button {

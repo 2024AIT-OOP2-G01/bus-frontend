@@ -18,6 +18,10 @@ body {
   padding: 0;
 }
 
-p{
+p,li,ul{
   margin: 0;
+}
+
+ul{
+  padding: 0;
 }

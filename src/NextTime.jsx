@@ -19,6 +19,12 @@ export const NextTime = (
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        @media screen and (max-width: 1000px){
+            font-size: 24px;
+        }
+        @media screen and (max-width: 600px){
+            font-size: 16px;
+        }
     `
 
     const Limit = styled.div`
@@ -26,6 +32,9 @@ export const NextTime = (
         display: flex;
         justify-content: center;
         align-items: baseline;
+        @media screen and (max-width: 600px){
+            font-size: 16px;
+        }
     `
 
     const BigSize = styled.p`
@@ -36,6 +45,9 @@ export const NextTime = (
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        @media screen and (max-width: 600px){
+            font-size: 48px;
+        }
     `
 
     const Wrapper = styled.div`
@@ -46,6 +58,12 @@ export const NextTime = (
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        @media screen and (max-width: 1000px){
+            width: 300px;
+        }
+        @media screen and (max-width: 600px){
+            width: 200px;
+        }
     `
   return (
     <Wrapper>

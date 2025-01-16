@@ -5,6 +5,7 @@ import useLocation from "./hooks/useLocation";
 import "./App.css";
 import Title from "./Title";
 import Just_Bus from "./Just_Bus";
+import Timetable from "./Timetable";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ function App() {
       <Title />
       <Just_Bus thisbus="ちょうどいいバス…"/>
       <Just_Bus thisbus="次にちょうどいいバス…"/>
+      <Timetable/>
     </>
   );
 }

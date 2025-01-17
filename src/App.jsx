@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     // 高蔵寺行きの時刻表の取得
     const fetchKouzouziTimeTable = async () => {
-      const url = "http://127.0.0.1:9999/api/aikann/yakusa_to_kouzouzi";
+      const url = "https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_kouzouzi";
       try {
         fetch(url)
           .then((response) => response.json())
@@ -59,7 +59,7 @@ function App() {
 
     // 岡崎行きの時刻表の取得
     const fetchOkazakiTimeTable = async () => {
-      const url = "http://127.0.0.1:9999/api/aikann/yakusa_to_okazaki";
+      const url = "https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_okazaki";
       try {
         fetch(url)
           .then((response) => response.json())

@@ -38,19 +38,19 @@ const useTimeCalc = () => {
 
     // time-to-bus
     // グループIDの取得
-    const group_response = await fetch(`http://127.0.0.1:9999//place/?lat=${location[0]}&lon=${location[1]}`);
+    const group_response = await fetch(`https://bus-backend-g28r.onrender.com/place/?lat=${location[0]}&lon=${location[1]}`);
     const group_data = await group_response.json();
     // トータルタイムの取得
-    const time_response = await fetch(`http://127.0.0.1:9999//internal/?from=${group_data.location_id}&to=1`);
+    const time_response = await fetch(`https://bus-backend-g28r.onrender.com/internal/?from=${group_data.location_id}&to=1`);
     const time_data = await time_response.json();
     // const time_data = { total_time: "300" };
 
     // train_depareure_time
     let next_train_url="";
     if(station === "kouzouzi"){
-      next_train_url = `http://127.0.0.1:9999/api/aikann/yakusa_to_kouzouzi/next?time=${nowStr}`;
+      next_train_url = `https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_kouzouzi/next?time=${nowStr}`;
     }else{
-      next_train_url = `http://127.0.0.1:9999/api/aikann/yakusa_to_okazaki/next?time=${nowStr}`;
+      next_train_url = `https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_okazaki/next?time=${nowStr}`;
     }
     const next_train_response = await fetch(next_train_url);
     const next_train_data = await next_train_response.json(); // 電車の時刻データ

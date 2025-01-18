@@ -8,6 +8,7 @@ import styled from "styled-components";
         display: flex;
         justify-content: center;
         align-items: baseline;
+        `
 
 const BigSize = styled.p`
   color: #0f0;
@@ -41,7 +42,6 @@ const Title = styled.p`
 const Wrapper = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  margin: ${(props) => props.margin};
   background-color: #000;
   display: flex;
   flex-direction: column;
@@ -57,12 +57,13 @@ export const NextTime = ({
   width = "540px",
   height = "240px",
   margin = "0 auto",
+  time = "5"
 }) => {
   return (
     <Wrapper width={width} height={height} margin={margin}>
       <Title fontSize={fontSize}>{Word}</Title>
       <Limit>
-        あと<BigSize>5</BigSize>分
+        あと<BigSize>{time}</BigSize>分
       </Limit>
     </Wrapper>
   );

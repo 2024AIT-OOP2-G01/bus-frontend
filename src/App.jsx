@@ -10,7 +10,6 @@ import Footer from "./Footer";
 
   const BigWrapper = styled.div`
     text-align: center;
-    padding: 5% 0;
   `;
 
   const WhiteContainer = styled.div`
@@ -25,13 +24,12 @@ import Footer from "./Footer";
 
   const BlueContainer = styled.div`
     background-color: #64c3d5;
-  `;
-    @media screen and (max-width: 1000px) {
-      flex-direction: column;
-      align-items: center;
-    }
-  `;
-  
+        padding: 10% 0;
+    `
+
+    const FlexWrapper = styled.div`
+    display: flex;
+    justify-content: center;
     @media screen and (max-width: 1000px) {
       flex-direction: column;
       align-items: center;
@@ -81,7 +79,7 @@ function App() {
         console.error("データ取得に失敗:", error);
       }
     };
-    
+    fetchNearTimeTable();
     fetchKouzouziTimeTable();
     fetchOkazakiTimeTable();
     getLocation();
@@ -103,6 +101,35 @@ function App() {
     return () => clearInterval(interval); // クリーンアップ
   }, []);
 
+  const fetchNearTimeTable = async () => {
+    const date = new Date()
+    const bus = `https://ait-busdiaa-api.onrender.com/?time=${date.getHours()}:${date.getMinutes()}`;
+    const kouzouji = `https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_kouzouzi/next?time=${date.getHours()}:${date.getMinutes()}`;
+    const okazaki = `https://bus-backend-g28r.onrender.com/api/aikann/yakusa_to_okazaki/next?time=${date.getHours()}:${date.getMinutes()}`;
+    try {
+      fetch(bus)
+        .then((response) => response.json())
+        .then((data) => {
+          setLimitBus(calculateTimeDifference(data.next_time))
+        })
+        .catch((error) => console.error("データ取得に失敗:", error));
+      fetch(kouzouji)
+        .then((response) => response.json())
+        .then((data) => {
+          setLimitKouzouzi(calculateTimeDifference(data.next_time))
+        })
+        .catch((error) => console.error("データ取得に失敗:", error));
+      fetch(okazaki)
+        .then((response) => response.json())
+        .then((data) => {
+          setLimitOkazaki(calculateTimeDifference(data.next_time))
+        })
+        .catch((error) => console.error("データ取得に失敗:", error));
+    } catch (error) {
+      console.error("データ取得に失敗:", error);
+    }
+  };
+
   const fetchGiri = async () => {
     const fetchOkazakiGiri = async () => {
       await hFetchOkazakiGiri(location, "okazaki");
@@ -120,8 +147,37 @@ function App() {
     const seconds = currentTime.getSeconds();
     if (seconds === 0) {
       fetchGiri();
+      fetchNearTimeTable();
     }
   }, [currentTime]);
+
+  function calculateTimeDifference(inputTimeStr) {
+      try {
+          // 入力の形式を確認 (HH:MM)
+          const timeParts = inputTimeStr.split(":");
+          if (timeParts.length !== 2 || isNaN(timeParts[0]) || isNaN(timeParts[1])) {
+              throw new Error("無効な形式です。'HH:MM' 形式で入力してください。");
+          }
+  
+          // 入力された時間をDateオブジェクトに変換
+          const now = new Date();
+          const inputTime = new Date(now);
+          inputTime.setHours(parseInt(timeParts[0], 10));
+          inputTime.setMinutes(parseInt(timeParts[1], 10));
+          inputTime.setSeconds(0);
+          inputTime.setMilliseconds(0);
+  
+          // 差分をミリ秒単位で計算
+          const timeDifferenceMs = inputTime - now;
+  
+          // 結果を秒、分、時間単位で変換
+          const differenceInSeconds = timeDifferenceMs / 1000;
+          const differenceInMinutes = differenceInSeconds / 60;
+          return(Math.round(differenceInMinutes.toFixed(2)));
+      } catch (error) {
+          console.error(error.message);
+      }
+  }
 
   return (
     <>
@@ -137,11 +193,10 @@ function App() {
               okazaki={okazakiGiri}
               kouzouzi={kouzouziGiri}
             />
-                <Just_Bus thisbus="次にちょうどいいバス…" />
-                <NextTime Word="次のバスが出発するまで" />
+                <NextTime Word="次のバスが出発するまで" time={limitbus}/>
                 <FlexWrapper>
-                  <NextTime Word="高蔵寺行き" width="270px" margin="0" />
-                  <NextTime Word="岡崎行き" width="270px" margin="0" />
+                  <NextTime Word="高蔵寺行き" width="270px" margin="0" time={limitkouzouzi}/>
+                  <NextTime Word="岡崎行き" width="270px" margin="0" time={limitokazaki}/>
                 </FlexWrapper>
               </>
             )}

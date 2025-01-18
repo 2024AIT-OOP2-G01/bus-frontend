@@ -7,7 +7,7 @@ export const NextTime = (
         fontSize = '32px',
         width = '540px',
         height = '240px',
-        margin = '0 auto'
+        margin = '0'
     }
 ) => {
 
@@ -22,9 +22,6 @@ export const NextTime = (
         @media screen and (max-width: 1000px){
             font-size: 24px;
         }
-        @media screen and (max-width: 600px){
-            font-size: 16px;
-        }
     `
 
     const Limit = styled.div`
@@ -33,9 +30,6 @@ export const NextTime = (
         display: flex;
         justify-content: center;
         align-items: baseline;
-        @media screen and (max-width: 600px){
-            font-size: 16px;
-        }
     `
 
     const BigSize = styled.p`
@@ -61,9 +55,6 @@ export const NextTime = (
         justify-content: space-around;
         @media screen and (max-width: 1000px){
             width: 300px;
-        }
-        @media screen and (max-width: 600px){
-            width: 200px;
         }
     `
   return (

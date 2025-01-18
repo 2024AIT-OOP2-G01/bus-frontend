@@ -71,7 +71,7 @@ const groupedTime = props.time.reduce((acc, t) => {
 
   return (
     <>
-    <h1>{props.title} 時刻表</h1>
+    <h1>{props.title} </h1>
     <TableWrapper>
       <StyleTimeTable border="1" cellPadding="5" cellSpacing="0">
         <tbody>

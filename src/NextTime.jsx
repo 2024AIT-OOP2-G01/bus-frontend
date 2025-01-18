@@ -2,16 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 // styled-componentsをコンポーネント外で定義
-const Limit = styled.div`
-  color: #0f0;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  @media screen and (max-width: 600px) {
-    font-size: 16px;
-  }
-`;
+  const Limit = styled.div`
+        color: #0F0;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
 
 const BigSize = styled.p`
   color: #0f0;
@@ -42,7 +38,6 @@ const Title = styled.p`
     font-size: 16px;
   }
 `;
-
 const Wrapper = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
@@ -53,9 +48,6 @@ const Wrapper = styled.div`
   justify-content: space-around;
   @media screen and (max-width: 1000px) {
     width: 300px;
-  }
-  @media screen and (max-width: 600px) {
-    width: 200px;
   }
 `;
 

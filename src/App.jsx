@@ -2,39 +2,49 @@ import { useState, useEffect } from "react";
 import useLocation from "./hooks/useLocation";
 import useTimeCalc from "./hooks/useTimeCalc";
 import styled from "styled-components";
-import "./App.css";
 import Title from "./Title";
 import Just_Bus from "./Just_Bus";
 import Timetable from "./Timetable";
 import NextTime from "./NextTime";
 import Footer from "./Footer";
 
-const BigWrapper = styled.div``;
+  const BigWrapper = styled.div`
+    text-align: center;
+    padding: 5% 0;
+  `;
 
-const WhiteContainer = styled.div`
-  width: 90%;
-  margin: auto;
-  background-color: #fff;
-  padding-top: 5%;
-`;
-
-const BlueContainer = styled.div`
-  background-color: #64C3D5;0;
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-
-  @media screen and (max-width: 1000px) {
+  const WhiteContainer = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-top: 5%;
+    display: flex;
     flex-direction: column;
     align-items: center;
-  }
-`;
+  `;
+
+  const BlueContainer = styled.div`
+    background-color: #64c3d5;
+  `;
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  `;
+  
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  `;
 
 function App() {
   const [kouzouzi, setKouzouzi] = useState([]);
   const [okazaki, setOkazaki] = useState([]);
+  const [selectedTimetable, setSelectedTimetable] = useState("home"); // 状態を管理
+  const [limitkouzouzi, setLimitKouzouzi] = useState([]);
+  const [limitokazaki, setLimitOkazaki] = useState([]);
+  const [limitbus, setLimitBus] = useState([]); // 状態を管理
   const [location, { getLocation }] = useLocation();
   const [okazakiGiri, { fetchData: hFetchOkazakiGiri }] = useTimeCalc();
   const [kouzouziGiri, { fetchData: hFetchKouzouziGiri }] = useTimeCalc();
@@ -53,7 +63,7 @@ function App() {
           })
           .catch((error) => console.error("データ取得に失敗:", error));
       } catch (error) {
-        console.error(error.message);
+        console.error("データ取得に失敗:", error);
       }
     };
 
@@ -68,10 +78,10 @@ function App() {
           })
           .catch((error) => console.error("データ取得に失敗:", error));
       } catch (error) {
-        console.error(error.message);
+        console.error("データ取得に失敗:", error);
       }
     };
-
+    
     fetchKouzouziTimeTable();
     fetchOkazakiTimeTable();
     getLocation();
@@ -112,29 +122,41 @@ function App() {
       fetchGiri();
     }
   }, [currentTime]);
+
   return (
     <>
       <BigWrapper>
         <BlueContainer>
           <Title />
           <WhiteContainer>
-            <Just_Bus
+            {/* Just_BusとNextTimeを"home"のみで表示 */}
+            {selectedTimetable === "home" && (
+              <>
+                <Just_Bus
               thisbus="ちょうどいいバス…"
               okazaki={okazakiGiri}
               kouzouzi={kouzouziGiri}
             />
-            {/* <Just_Bus thisbus="次にちょうどいいバス…" /> */}
-            <NextTime Word="次のバスが出発するまで" />
-            <FlexWrapper>
-              <NextTime Word="高蔵寺行き" width="300px" margin="0" />
-              <NextTime Word="岡崎行き" width="300px" margin="0" />
-            </FlexWrapper>
-            <Footer />
+                <Just_Bus thisbus="次にちょうどいいバス…" />
+                <NextTime Word="次のバスが出発するまで" />
+                <FlexWrapper>
+                  <NextTime Word="高蔵寺行き" width="270px" margin="0" />
+                  <NextTime Word="岡崎行き" width="270px" margin="0" />
+                </FlexWrapper>
+              </>
+            )}
+            {/* Timetableの表示切り替え */}
+            {selectedTimetable === "kouzouzi" && (
+              <Timetable time={kouzouzi} title="高蔵寺行き時刻表" />
+            )}
+            {selectedTimetable === "okazaki" && (
+              <Timetable time={okazaki} title="岡崎行き時刻表" />
+            )}
           </WhiteContainer>
+          {/* Footerに状態とイベントを渡す */}
+          <Footer onSelect={setSelectedTimetable} />
         </BlueContainer>
       </BigWrapper>
-      <Timetable time={kouzouzi} title="高蔵寺行き" />
-      <Timetable time={okazaki} title="岡崎行き" />
     </>
   );
 }

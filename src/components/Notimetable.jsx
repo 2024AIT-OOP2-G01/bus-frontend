@@ -10,6 +10,30 @@ import Timetable from "./Timetable";
 import NextTime from "./NextTime";
 import Footer from './Footer';
 
+const BigWrapper = styled.div`
+
+`
+
+const WhiteContainer = styled.div`
+  width: 90%;
+  margin: auto; 
+  background-color: #FFF;
+  padding-top: 5%;
+`
+
+const BlueContainer = styled.div`
+  background-color: #64C3D5;0;
+`
+
+const FlexWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 1000px){
+    flex-direction: column;
+    align-items: center;
+  }
+`
 
 function Notimetable() {
   const [count, setCount] = useState(0);
@@ -54,30 +78,6 @@ function Notimetable() {
     fetchOkazakiTimeTable();
   }, []);
 
-  const BigWrapper = styled.div`
-
-  `
-
-  const WhiteContainer = styled.div`
-    width: 90%;
-    margin: auto; 
-    background-color: #FFF;
-    padding-top: 5%;
-  `
-
-  const BlueContainer = styled.div`
-    background-color: #64C3D5;0;
-  `
-
-  const FlexWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-
-    @media screen and (max-width: 1000px){
-      flex-direction: column;
-      align-items: center;
-    }
-  `
   return (
     <>
     <BigWrapper>

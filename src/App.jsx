@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import useLocation from "./hooks/useLocation";
 import useTimeCalc from "./hooks/useTimeCalc";
 import styled from "styled-components";
-import Title from "./Title";
-import Just_Bus from "./Just_Bus";
-import Timetable from "./Timetable";
-import NextTime from "./NextTime";
-import Footer from "./Footer";
+import Title from "./components/Title";
+import Just_Bus from "./components/Just_Bus";
+import Timetable from "./components/Timetable";
+import NextTime from "./components/NextTime";
+import Footer from "./components/Footer";
 
   const BigWrapper = styled.div`
     text-align: center;

@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
 
-const Just_Bus = (props) => {
-    
 const White_board = styled.div`
   width: 430px;
   padding-bottom: 5%;
@@ -11,6 +9,8 @@ const White_board = styled.div`
     padding-bottom: 5%;
   }
 `
+
+const Just_Bus = (props) => {
 
   return (
     <White_board>

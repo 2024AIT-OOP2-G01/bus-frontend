@@ -5,7 +5,7 @@ const FooterWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: #ddd;
-  padding: 10px;
+  padding: 10px 0;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -20,7 +20,9 @@ const FooterButton = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 16px;
-
+  @media screen and (max-width: 1000px){
+    font-size: 13px;
+  }
   &:hover {
     background-color: #519caf;
   }

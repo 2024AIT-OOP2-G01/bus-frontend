@@ -21,8 +21,8 @@ import Footer from "./components/Footer";
     flex-direction: column;
     align-items: center;
     @media screen and (max-width: 1000px) {
-      width: 95%;
-      padding: 5% 0;
+      width: 100%;
+      padding: 4% 0;
     }
   `;
 

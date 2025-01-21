@@ -47,7 +47,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   @media screen and (max-width: 1000px) {
-    width: 300px;
+    width: 360px;
+    margin: 10px 0;
   }
 `;
 

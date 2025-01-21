@@ -31,10 +31,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: #64C3D5;
+  @media screen and (max-width: 1000px){
+    width: 95%;
+  }
 }
 
 h1 {
-  font-size: 1.6em;
+  font-size: 48px;
   line-height: 1.1;
 }
 

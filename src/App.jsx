@@ -13,18 +13,22 @@ import Footer from "./components/Footer";
   `;
 
   const WhiteContainer = styled.div`
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     background-color: #fff;
-    padding-top: 5%;
+    padding-top: 8%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media screen and (max-width: 1000px) {
+      width: 95%;
+      padding: 5% 0;
+    }
   `;
 
   const BlueContainer = styled.div`
     background-color: #64c3d5;
-        padding: 10% 0;
+    padding: 10% 0;
     `
 
     const FlexWrapper = styled.div`

@@ -206,10 +206,10 @@ function App() {
             )}
             {/* Timetableの表示切り替え */}
             {selectedTimetable === "kouzouzi" && (
-              <Timetable time={kouzouzi} title="高蔵寺行き時刻表" />
+              <Timetable time={kouzouzi} title="高蔵寺行き" />
             )}
             {selectedTimetable === "okazaki" && (
-              <Timetable time={okazaki} title="岡崎行き時刻表" />
+              <Timetable time={okazaki} title="岡崎行き" />
             )}
           </WhiteContainer>
           {/* Footerに状態とイベントを渡す */}
